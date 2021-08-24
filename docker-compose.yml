@@ -21,19 +21,11 @@ services:
       - build/docker.env
     environment:
       - JOBS_DB_HOST=db
-  # Uncomment the following lines to mount workspaceConfig file
-  # volumes:
-  #   - <absolute_path_to_workspace_config>:/etc/rudderstack/workspaceConfig.json
+    volumes:
+      - /Local/Absolute/Path/To/workspaceConfig.json:/etc/rudderstack/workspaceConfig.json
   d-transformer:
     build:
       context: ./rudder-transformer/
       dockerfile: Dockerfile
     ports:
       - "9090:9090"
-  # minio:
-  #   image: minio/minio
-  #   ports:
-  #     - "9000:9000"
-  #   env_file:
-  #     - build/docker.env
-  #   command: server /data
